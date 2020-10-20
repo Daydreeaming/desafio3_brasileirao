@@ -1,17 +1,31 @@
 const fs = require('fs');
-const tabela = require('../repositories/tabela.js');
-
+const jogos = require('../repositories/jogosTabela.js');
+const response = require('./response.js');
 const db = require('../utils/database.js');
+const classificacao = require('../repositories/classificacao');
 
-const listarJogoPorRodada = async () => {
-	const rodada = await tabela.obterJogosRodada(1);
-	console.log(rodada)
+const listarJogoPorRodada = async (ctx) => {
+	const { rodada = null } = ctx.params;
+
+	if (rodada) {
+		const rodadaObtida = await jogos.obterJogosRodada(rodada);
+		if (rodadaObtida) {
+			return response(ctx, 200, rodadaObtida);
+		}
+		return response(ctx, 400, { message: 'Bad Request' });
+	}
+
+	return response(ctx, 400, { message: 'Pedido mal formatado' });
 };
 
-const obterClassificacao = async () => {
-	let tabelaBrasileirao = await tabela.criarTabelaJogos();
-	tabelaBrasileirao = await tabela.adicionarJogos();
-	console.log(tabelaBrasileirao);
+const obterClassificacao = async (ctx) => {
+	const brasileirao = await classificacao.organizarClassificacaoBrasileirao();
+
+	if (brasileirao) {
+		return response(ctx, 200, brasileirao);
+	} else {
+		return response(ctx, 404, { message: 'Not Found' });
+	}
 };
 
 const editarPlacarJogo = () => {};

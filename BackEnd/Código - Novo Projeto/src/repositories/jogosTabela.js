@@ -14,7 +14,7 @@ const criarTabelaJogos = async () => {
 	return bd.query(query);
 };
 
-const adicionarJogos = async (jogos) => {
+const adicionarJogosExistentes = async () => {
 	
 	const query = `insert into jogos
     (time_casa, gols_casa, gols_visitante, time_visitante, rodada)
@@ -1538,7 +1538,6 @@ values
     ('CSA', 1, 2, 'São Paulo', 38);`
 	
 	return bd.query(query);
-
 }
 
 const obterJogosRodada = async (rodada) => {
@@ -1562,10 +1561,17 @@ const obterTodosOsJogos = async () => {
 	return result.rows;
 };
 
+const drop = async (tableName) => {
+	if (tableName) {
+		await bd.query(`DROP TABLE ${tableName}`);
+	}
+};
+
 module.exports = 
 { 
 	criarTabelaJogos, 
-	adicionarJogos, 
+	adicionarJogosExistentes, 
 	obterJogosRodada, 
-	obterTodosOsJogos
+	obterTodosOsJogos, 
+	drop,
 };
