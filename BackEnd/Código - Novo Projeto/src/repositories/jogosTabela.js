@@ -1,4 +1,4 @@
-const bd = require("../utils/database.js");
+const bd = require('../utils/database.js');
 
 const criarTabelaJogos = async () => {
 	const query = `CREATE TABLE IF NOT EXISTS jogos
@@ -9,13 +9,12 @@ const criarTabelaJogos = async () => {
 		gols_casa int,
 		gols_visitante int,
 		rodada int
-	)`
+	)`;
 
 	return bd.query(query);
 };
 
 const adicionarJogosExistentes = async () => {
-	
 	const query = `insert into jogos
     (time_casa, gols_casa, gols_visitante, time_visitante, rodada)
 values
@@ -1535,27 +1534,39 @@ values
 insert into jogos
     (time_casa, gols_casa, gols_visitante, time_visitante, rodada)
 values
-    ('CSA', 1, 2, 'São Paulo', 38);`
-	
+    ('CSA', 1, 2, 'São Paulo', 38);`;
+
 	return bd.query(query);
-}
+};
 
 const obterJogosRodada = async (rodada) => {
 	const query = {
-		text: `SELECT * FROM jogos WHERE rodada = $1`, 
+		text: `SELECT * FROM jogos WHERE rodada = $1`,
 		values: [rodada],
-	}
+	};
 
 	const result = await bd.query(query);
-	
+
 	return result.rows;
 };
 
 const obterTodosOsJogos = async () => {
 	const query = {
-		text: `SELECT * FROM jogos`
-	}
+		text: `SELECT * FROM jogos`,
+	};
 
+	const result = await bd.query(query);
+
+	return result.rows;
+};
+
+const atualizarJogo = async (id, golsCasa, golsVisitante) => {
+	const query = {
+		text: `UPDATE jogos
+		set gols_casa = $1,
+		gols_visitante = $2 where id = $3`,
+		values: [golsCasa, golsVisitante, id],
+	};
 	const result = await bd.query(query);
 
 	return result.rows;
@@ -1567,11 +1578,11 @@ const drop = async (tableName) => {
 	}
 };
 
-module.exports = 
-{ 
-	criarTabelaJogos, 
-	adicionarJogosExistentes, 
-	obterJogosRodada, 
-	obterTodosOsJogos, 
+module.exports = {
+	criarTabelaJogos,
+	adicionarJogosExistentes,
+	obterJogosRodada,
+	obterTodosOsJogos,
+	atualizarJogo,
 	drop,
 };

@@ -1,21 +1,16 @@
-const fs = require('fs');
 const jogos = require('../repositories/jogosTabela.js');
-const response = require('./response.js');
+const response = require('../utils/response.js');
 const db = require('../utils/database.js');
-const classificacao = require('../repositories/classificacao');
+const classificacao = require('../repositories/classificacao.js');
 
 const listarJogoPorRodada = async (ctx) => {
 	const { rodada = null } = ctx.params;
-
-	if (rodada) {
-		const rodadaObtida = await jogos.obterJogosRodada(rodada);
-		if (rodadaObtida) {
-			return response(ctx, 200, rodadaObtida);
-		}
-		return response(ctx, 400, { message: 'Bad Request' });
+	const rodadaObtida = await jogos.obterJogosRodada(rodada);
+	
+	if (rodadaObtida.length) {
+		return response(ctx, 200, rodadaObtida);
 	}
-
-	return response(ctx, 400, { message: 'Pedido mal formatado' });
+	return response(ctx, 400, { message: 'Bad Request' });
 };
 
 const obterClassificacao = async (ctx) => {
@@ -28,6 +23,14 @@ const obterClassificacao = async (ctx) => {
 	}
 };
 
-const editarPlacarJogo = () => {};
+const editarPlacarJogo = async (ctx) => {
+	const placarEditado = await classificacao.editarPlacarPartida(ctx);
+
+	if (placarEditado) {
+		return response(ctx, 200, { mensagem: 'Success' });
+	} else {
+		return response(ctx, 400, { mensagem: 'Bad Request' });
+	}
+};
 
 module.exports = { listarJogoPorRodada, obterClassificacao, editarPlacarJogo };

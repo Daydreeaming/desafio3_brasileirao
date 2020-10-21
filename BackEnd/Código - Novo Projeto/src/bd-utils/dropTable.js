@@ -15,4 +15,3 @@ if (arg[0] === 'jogos') {
 
 
 return 0
-// process.exit(0)
