@@ -1,38 +1,156 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap");
+
+.body{
+	background-color: #ecebdc;
+	font-family: 'Sora';
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header{
+	display: flex;
+    justify-content: center;
+    background-color: #2b7148;
+    color: #fff;
+    padding: 1em 2em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header_contents {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+    max-width: 1200px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+h1 {
+	color: white;
+	margin: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.login {
+	display: flex;
+	align-items: center;
+	color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input {
+	margin: 12.8px;
+	border: white;
+	border-radius: 8px;
+	padding: 6px 10px;
+	outline: none;
+}
+
+.button_header{
+	color: white;
+	font-weight: bold;
+	background-color: #04375c;
+	outline: none;
+	padding: 4.8px 24px;
+	border: 2px solid transparent;
+	border-radius: 8px;
+}
+
+.body_table {
+	display: flex;
+    justify-content: center;
+    padding: 2em;
+}
+
+.center {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+    max-width: 1200px;
+}
+
+.left_table{
+	border-collapse: collapse;
+}
+
+.left_table_contents{
+	width: 100%;
+	align-items: center;
+	flex-direction: column;
+	border-collapse: collapse;
+}
+
+.header_table_left {
+	justify-content: center;
+	background-color: #8ab99d;
+}
+
+.header_row{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+.button_table_left{
+	background: none;
+	border: none;
+	margin: 0;
+	padding: 0 8px;
+}
+
+h2 {
+	margin: 16px 112px;
+}
+
+.table_contents{
+	width: 100%;
+	background-color: #fff;
+}
+
+.matches {
+	margin-bottom: 6px;
+}
+
+.matches > td {
+	padding: 8px 0px
+}
+
+.team1{
+	text-align: right;
+}
+
+.goals{
+	font-size: 24px;
+	text-align: center;
+}
+
+.button_table_left_contents{
+	background: lightgreen;
+	border-radius: 9999px;
+	border: none;
+	margin: 0;
+	padding: 4px;
+	outline: none;
+}
+
+.right_table{
+	border-collapse: collapse;
+}
+
+.header_table_right {
+	background-color: #8ab99d;
+}
+
+
+.data_row{
+	font-size: 19.2px;
+	font-weight: bold;
+	margin-right: 8px;
+}
+
+.button_table_right{
+	background: none;
+	border: none;
+	margin: 0;
+	padding: 2;
+	outline: none;
+}
+
+.td_stylization{
+	text-align: right;
+	padding: 4px 8px;
 }
