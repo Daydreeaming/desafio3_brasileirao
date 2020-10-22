@@ -69,8 +69,6 @@ input {
 
 .left_table_contents{
 	width: 100%;
-	align-items: center;
-	flex-direction: column;
 	border-collapse: collapse;
 }
 
@@ -99,6 +97,11 @@ h2 {
 .table_contents{
 	width: 100%;
 	background-color: #fff;
+}
+
+.loading{
+	margin: 10px;
+	text-align: center;
 }
 
 .matches {

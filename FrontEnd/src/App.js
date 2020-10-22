@@ -5,15 +5,18 @@ import "./App.css";
 function App() {
 
 	const fetchJson = (url) => fetch(url).then((res) => res.json());
-
-
-	fetch(`https://desafio-3-back-cubos-academy.herokuapp.com/classificacao`)
-	.then(resp => resp.json())
-	.then(dados => console.log(dados))
-
+	const [rodada, setRodada ]= React.useState(0)
 	const [times, setTimes] = React.useState(null)
 	
+	React.useEffect(() => {
+		fetch(`https://desafio-3-back-cubos-academy.herokuapp.com/classificacao`)
+		.then(resp => resp.json())
+		.then(resp => {
+			const results = resp.dados			
 
+		});
+
+	}, []);
 return (
     <div className="body">
 		<div className="header">
@@ -44,99 +47,15 @@ return (
 						</div>
 					</div>
 
-					<table className="left_table_contents">
+					<table className="left_table_contents"> 
 						<tbody className="table_contents">
-							<tr className="matches">
-								<td className="team1"> Bahia </td>
+							{ rodada === null ? <tr className="loading"> Carregando ... </tr> : <tr className="matches">								<td className="team1"> Bahia </td>
 								<td className="goals"> 1 </td>
 								<td className="goals"> x </td>
 								<td className= "goals"> 2 </td>
 								<td className= "team2"> Internacional </td>
 								<td> <button className="button_table_left_contents"> <img src="https://systemuicons.com/images/icons/pen.svg"/></button></td>
-							</tr>
-
-							<tr className="matches">
-								<td className="team1"> Bahia </td>
-								<td className="goals"> 1 </td>
-								<td className="goals"> x </td>
-								<td className= "goals"> 2 </td>
-								<td className= "team2"> Internacional </td>
-								<td> <button className="button_table_left_contents"> <img src="https://systemuicons.com/images/icons/pen.svg"/></button></td>
-							</tr>
-
-							<tr className="matches">
-								<td className="team1"> Internacional </td>
-								<td className="goals"> 1 </td>
-								<td className="goals"> x </td>
-								<td className= "goals"> 2 </td>
-								<td className= "team2"> Internacional </td>
-								<td> <button className="button_table_left_contents"> <img src="https://systemuicons.com/images/icons/pen.svg"/></button></td>
-							</tr>
-
-							<tr className="matches">
-								<td className="team1"> Bahia </td>
-								<td className="goals"> 1 </td>
-								<td className="goals"> x </td>
-								<td className= "goals"> 2 </td>
-								<td className= "team2"> Internacional </td>
-								<td> <button className="button_table_left_contents"> <img src="https://systemuicons.com/images/icons/pen.svg"/></button></td>
-							</tr>
-
-							<tr className="matches">
-								<td className="team1"> Bahia </td>
-								<td className="goals"> 1 </td>
-								<td className="goals"> x </td>
-								<td className= "goals"> 2 </td>
-								<td className= "team2"> Internacional </td>
-								<td> <button className="button_table_left_contents"> <img src="https://systemuicons.com/images/icons/pen.svg"/></button></td>
-							</tr>
-
-							<tr className="matches">
-								<td className="team1"> Bahia </td>
-								<td className="goals"> 1 </td>
-								<td className="goals"> x </td>
-								<td className= "goals"> 2 </td>
-								<td className= "team2"> Internacional </td>
-								<td> <button className="button_table_left_contents"> <img src="https://systemuicons.com/images/icons/pen.svg"/></button></td>
-							</tr>
-
-							<tr className="matches">
-								<td className="team1"> Bahia </td>
-								<td className="goals"> 1 </td>
-								<td className="goals"> x </td>
-								<td className= "goals"> 2 </td>
-								<td className= "team2"> Internacional </td>
-								<td> <button className="button_table_left_contents"> <img src="https://systemuicons.com/images/icons/pen.svg"/></button></td>
-							</tr>
-
-							<tr className="matches">
-								<td className="team1"> Gremio </td>
-								<td className="goals"> 1 </td>
-								<td className="goals"> x </td>
-								<td className= "goals"> 2 </td>
-								<td className= "team2"> Atletico </td>
-								<td> <button className="button_table_left_contents"> <img src="https://systemuicons.com/images/icons/pen.svg"/></button></td>
-							</tr>
-
-							<tr className="matches">
-								<td className="team1"> Bahia </td>
-								<td className="goals"> 1 </td>
-								<td className="goals"> x </td>
-								<td className= "goals"> 2 </td>
-								<td className= "team2"> Internacional </td>
-								<td> <button className="button_table_left_contents"> <img src="https://systemuicons.com/images/icons/pen.svg"/></button></td>
-							</tr>
-
-							<tr className="matches">
-								<td className="team1"> Bahia </td>
-								<td className="goals"> 1 </td>
-								<td className="goals"> x </td>
-								<td className= "goals"> 2 </td>
-								<td className= "team2"> Internacional </td>
-								<td> <button className="button_table_left_contents"> <img src="https://systemuicons.com/images/icons/pen.svg"/></button></td>
-							</tr>
-
-
+							</tr>}
 						</tbody>
 					</table>
 				</div>
