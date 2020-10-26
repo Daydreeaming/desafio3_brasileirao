@@ -99,7 +99,8 @@ h2 {
 	background-color: #fff;
 }
 
-.loading{
+.loading {
+	width: 100%;
 	margin: 10px;
 	text-align: center;
 }
@@ -121,8 +122,13 @@ h2 {
 	text-align: center;
 }
 
+.size {
+	border: 2px solid black;
+	width: 20px;
+}
+
 .button_table_left_contents{
-	background: lightgreen;
+	background: #8ab99d;
 	border-radius: 9999px;
 	border: none;
 	margin: 0;
@@ -156,4 +162,8 @@ h2 {
 .td_stylization{
 	text-align: right;
 	padding: 4px 8px;
+}
+
+img:active, img:focus {
+	outline: 2px solid black;
 }
